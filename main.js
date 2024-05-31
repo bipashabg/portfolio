@@ -16,18 +16,18 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera);
 
-const geometry = new THREE.TubeGeometry( 10, 3, 16, 100);
-const material = new THREE.MeshBasicMaterial({ color: 0xB5C0D0, wireframe: true});
-const tube = new THREE.Mesh(geometry, material);
+const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);
+const material = new THREE.MeshBasicMaterial({ color: 0xFF6347});
+const torus = new THREE.Mesh(geometry, material);
 
-scene.add(tube);
+scene.add(torus);
 
 function animate(){
   requestAnimationFrame( animate);
-  tube.rotation.x += 0.01;
-  tube.rotation.y +=0.005;
-  tube.rotation.z +=0.01;
-  
+  torus.rotation.x += 0.01;
+  torus.rotation.y +=0.005;
+  torus.rotation.z +=0.01;
+
   renderer.render( scene, camera);
 }
 
