@@ -79,3 +79,28 @@ canvas {
   .left {
     grid-column: 6 / 12;
   }
+
+  .social-icons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .social-icons li {
+      display: inline-block;
+      margin-right: 70px;
+    }
+    .social-icons li:last-child {
+      margin-right: 0;
+    }
+    .social-icons li a {
+      color: #FFA1F5;
+      font-size: 70px;
+      transition: color 0.3s;
+    }
+    .social-icons li a:hover {
+      color: #BC7AF9;
+    }
+    .social-icons-container {
+      width: max-content; /* Adjust the width as needed */
+      margin-bottom: 20px; /* Add some space below the icons */
+    }
