@@ -28,9 +28,11 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
+/*
 const LightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(LightHelper, gridHelper);
+*/
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -88,6 +90,45 @@ const pfp = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ map: pfpTexture })
 );
 scene.add(pfp);
+
+//sphere
+const backTexture = new THREE.TextureLoader().load('back.jpeg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+
+const sphere = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshNormalMaterial({
+    map: backTexture,
+    normalMap: normalTexture
+  })
+);
+
+scene.add(sphere);
+
+sphere.position.z = 30;
+sphere.position.setX(-10);
+
+
+
+function moveCamera(){
+
+  const t = document.body.getBoundingClientRect().top;
+  sphere.rotation.x += 0.05;
+  sphere.rotation.y += 0.075;
+  sphere.rotation.z += 0.05;
+
+  pfp.rotation.y += 0.01;
+  pfp.rotation.z +=0.01;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
+
+}
+
+document.body.onscroll = moveCamera
+
+document.body.onscroll = moveCamera
 
 function animate() {
   requestAnimationFrame(animate);
